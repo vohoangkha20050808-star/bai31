@@ -1,0 +1,30 @@
+<form onsubmit="handleSubmit(event)">
+    <label>Số đầu: <input type="number" id="numStart"></label><br>
+    <label>Số cuối: <input type="number" id="numEnd"></label><br>
+    <button type="submit">Tính tích</button>
+</form>
+<p id="result"></p>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();
+    let start = parseInt(document.getElementById("numStart").value);
+    let end = parseInt(document.getElementById("numEnd").value);
+    
+    let product = 1;
+    let count = 0;
+    
+    let min = Math.min(start, end);
+    let max = Math.max(start, end);
+    
+    for (let i = min; i <= max; i++) {
+        if (i !== 0 && i % 7 === 0) {
+            product *= i;
+            count++;
+        }
+    }
+    
+    let res = (count > 0) ? product : 0;
+    document.getElementById("result").innerText = "Tích là: " + res;
+}
+</script>
